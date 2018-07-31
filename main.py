@@ -1,6 +1,7 @@
 
 import ui
 import sys
+from new_game import new_game
 
 def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
