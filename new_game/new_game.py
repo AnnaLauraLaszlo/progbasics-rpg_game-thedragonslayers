@@ -28,7 +28,17 @@ def choose_new_game():
 
 
 def create_hero():
-    pass
+    inputs = ui.get_inputs(['First chose your gender (male, female or other): '], '')
+    option = inputs[0]
+    if option.lower == 'male':
+        pass
+    elif option.lower == 'female':
+        pass
+    elif option.lower == 'other':
+        pass
+    else:
+        raise KeyError('There is no such option. Yet.')
+    
 
 
 def choose_preset_hero():
