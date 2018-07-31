@@ -3,6 +3,7 @@ import ui
 import sys
 from new_game import new_game
 
+
 def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
@@ -26,11 +27,11 @@ def choose():
 
 def handle_menu():
     options = ["\033[1;32;48mNew Game",
-                "Resume",
-                "Store",
-                "Inventory",
-                "Level Up",
-                "Options"]
+               "Resume",
+               "Store",
+               "Inventory",
+               "Level Up",
+               "Options"]
 
     ui.print_menu("Main Menu", options, "Exit Game")
 
