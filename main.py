@@ -1,10 +1,12 @@
 
 import ui
 import sys
+import pygame
 from new_game import new_game
 
 
 def choose():
+    
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     if option == "1":
@@ -37,7 +39,11 @@ def handle_menu():
 
 
 def main():
-    while True:
+    pygame.init()
+    pygame.display.set_caption("The Dragonslayers")
+    screen = pygame.display.set_mode((700,600))
+    running = True
+    while running:
         handle_menu()
         try:
             choose()

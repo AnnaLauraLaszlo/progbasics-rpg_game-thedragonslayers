@@ -28,13 +28,13 @@ def choose_new_game():
 
 
 def create_hero():
-    inputs = ui.get_inputs(['First chose your gender (male, female or other): '], '')
-    option = inputs[0]
-    if option.lower == 'male':
+    inputs = ui.get_inputs(['First, choose your gender (male, female or other): '], '')
+    option = inputs[0].lower
+    if option == 'male':
+        print('yay')
+    elif option == 'female':
         pass
-    elif option.lower == 'female':
-        pass
-    elif option.lower == 'other':
+    elif option == 'other':
         pass
     else:
         raise KeyError('There is no such option. Yet.')
