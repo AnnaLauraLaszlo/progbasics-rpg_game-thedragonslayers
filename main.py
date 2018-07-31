@@ -42,6 +42,8 @@ def main():
     pygame.init()
     pygame.display.set_caption("The Dragonslayers")
     screen = pygame.display.set_mode((700,600))
+    background = pygame.Surface(screen.get_size())
+    background.fill((255, 255, 255))
     running = True
     while running:
         handle_menu()
@@ -53,3 +55,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
