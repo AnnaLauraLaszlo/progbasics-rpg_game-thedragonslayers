@@ -75,12 +75,12 @@ def get_class_stats(user_class, user_data_dict):
     weapon_list = ['magic rod', 'great axe']
     if user_class.lower() == 'mage':
         hero_weapon = weapon_list[0]
-        hero_health = 10
-        hero_damage = 5
+        hero_health = 20
+        hero_damage = 7
     if user_class.lower() == 'warrior':
         hero_weapon = weapon_list[1]
-        hero_health = 5
-        hero_damage = 10
+        hero_health = 25
+        hero_damage = 5
     
     user_data_dict['Damage'] = hero_damage
     user_data_dict['Health'] = hero_health
