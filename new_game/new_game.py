@@ -43,6 +43,7 @@ def create_hero(user_data_dict):
 def get_user_name(user_data_dict):
     user_name = input('What is your name wanderer? ')
     user_data_dict['Name'] = user_name
+    user_data_dict['Level'] = 1
     
     return user_data_dict
 
@@ -50,11 +51,11 @@ def get_user_name(user_data_dict):
 def get_user_gender(user_data_dict):
     user_gender = str(input('Now choose your gender (male, female or other): '))
     if user_gender.lower() == 'male':
-        print('Hello sir')
+        print('Hello sir!')
     elif user_gender.lower() == 'female':
-        print('Hello miss')
+        print('Hello miss!')
     elif user_gender.lower() == 'other':
-        print('Hello you')
+        print('Hello you!')
     else:
         raise KeyError('There is no such option. Yet.')
     user_data_dict['Gender'] = user_gender
