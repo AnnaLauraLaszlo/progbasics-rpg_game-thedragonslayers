@@ -10,7 +10,7 @@ def choose():
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     if option == "1":
-        new_game.start_module()
+        new_game.start_module('hero.csv')
     elif option == "2":
         resume.start_module()
     elif option == "3":
