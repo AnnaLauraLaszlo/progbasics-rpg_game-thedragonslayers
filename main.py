@@ -5,6 +5,7 @@ import pygame
 from new_game import new_game
 from quests import quests
 from resume import resume
+from character import character
 
 
 def choose():
@@ -22,7 +23,7 @@ def choose():
     elif option == "4":
         inventory.start_module()
     elif option == "5":
-        level_up.start_module()
+        character.start_module('hero.csv')
     elif option == "6":
         options.start_module()
     elif option == "0":
@@ -36,7 +37,7 @@ def handle_menu():
                "Resume",
                "Store",
                "Inventory",
-               "Level Up",
+               "Your Character",
                "Options"]
 
     ui.print_menu("Main Menu", options, "Exit Game")
