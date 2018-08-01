@@ -29,4 +29,6 @@ def start_module(file_name, user_data_dict):
 def wolf_event(file_name, user_data_dict):
     forest_enemy_1 = {'Name': 'Wolf', 'Health': 5, 'Damage': 3}
     print('Oh No! You are surrounded by a pack of wolfes! You have to fight!')
-    common.minion_fight(user_data_dict, forest_enemy_1, 3)
+    user_data_dict['Health'] = common.minion_fight(user_data_dict, forest_enemy_1, 3)
+    data_manager.write_user_dictionary_to_cvs(file_name, user_data_dict)
+

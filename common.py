@@ -33,10 +33,11 @@ def minion_fight(user_dict, enemy_dict, number_of_enemies):
                         break
                     except IndexError:
                         print('You killed them all! Good job!')
-                        break  
+                        return hero_health
                 
-        
 
+def get_loot():
+    pass
 
 
 '''hero_dict = {'Health': 20, 'Damage': 5}
