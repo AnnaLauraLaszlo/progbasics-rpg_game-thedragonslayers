@@ -23,6 +23,7 @@ def choose_new_game(file_name, user_data_dict):
         if option == '1':
             create_hero(user_data_dict)
             data_manager.write_user_dictionary_to_cvs(file_name, user_data_dict)
+            new_game = False
         elif option == '2':
             choose_preset_hero()
         elif option == '3':

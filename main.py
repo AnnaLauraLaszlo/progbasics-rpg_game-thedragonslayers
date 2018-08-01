@@ -3,6 +3,8 @@ import ui
 import sys
 import pygame
 from new_game import new_game
+from quests import quests
+from resume import resume
 
 
 def choose():
@@ -11,8 +13,10 @@ def choose():
     option = inputs[0]
     if option == "1":
         new_game.start_module('hero.csv')
+        quests.start_module('hero.csv')
     elif option == "2":
-        resume.start_module()
+        resume.start_module('hero.csv')
+        quests.start_module('hero.csv')
     elif option == "3":
         store.start_module()
     elif option == "4":
