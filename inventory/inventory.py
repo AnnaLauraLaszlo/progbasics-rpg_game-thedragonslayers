@@ -99,7 +99,3 @@ def main(game_display,close_inventory):
         show_gold(game_display, font, 5)
         pygame.display.update()
         clock.tick(60)
-
-
-
-

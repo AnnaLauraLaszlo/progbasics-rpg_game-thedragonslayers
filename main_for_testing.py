@@ -47,6 +47,7 @@ def main():
     name = True
     MAIN = True
     close_inventory = True
+    close_quest = True
 
     clock = pygame.time.Clock()
 
@@ -221,13 +222,15 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                MAIN = True
+                MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 270 and pygame.mouse.get_pos()[0] < 420 :
                 close_inventory = False
                 inventory.main(screen ,close_inventory)
                 MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 40 and pygame.mouse.get_pos()[0] < 190 :
-                MAIN = True
+                close_quest = False
+                quests.quests(close_quest)
+                MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 500 and pygame.mouse.get_pos()[0] < 690 :
                 MAIN = True
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 880 :

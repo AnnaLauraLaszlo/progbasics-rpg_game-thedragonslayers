@@ -27,5 +27,5 @@ def get_user_dictionary_from_cvs(file_name):
     with open(file_name, 'r') as file:
         reader = csv.reader(file)
         user_data_dict = dict(reader)
-
     return user_data_dict
+
