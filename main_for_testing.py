@@ -48,6 +48,7 @@ def main():
     MAIN = True
     close_inventory = True
     close_quest = True
+    close_shop = True
 
     clock = pygame.time.Clock()
 
@@ -236,17 +237,15 @@ def main():
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 40 and pygame.mouse.get_pos()[0] < 190 :
                 close_quest = False
                 quests.quests_main(close_quest,user_data_dict)
-                #MAIN = False
+                MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 500 and pygame.mouse.get_pos()[0] < 690 :
-                MAIN = True
+                close_shop = False
+                inventory.show_shop(close_shop,screen)
+                MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 880 :
                 MAIN = True
 
         pygame.display.flip()
-
-    
-
-                  
 
 if __name__ == '__main__':
     main()

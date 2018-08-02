@@ -43,6 +43,23 @@ def show_gold(game_display, font, gold_coins):
     gold = font.render("Gold: " + str(gold_coins), True, (250, 215, 0))
     game_display.blit(gold, (500, 30))
 
+def show_shop(close_shop,game_display):
+    clock = pygame.time.Clock()
+    red = (255, 0, 0)
+    blue = (0,0,255)
+    boss_loot_img = pygame.image.load("images/boss_loot.png") 
+    while not close_shop:
+        show_boss_loot(game_display, boss_loot_img, 300, 50)  
+        ui.draw_button(730,380,50,200,game_display,"BACK TO MENU",738,395,blue,red,6)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                close_shop = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 380 and pygame.mouse.get_pos()[1] < 430 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 930 :
+                close_shop = True
+
+        pygame.display.update()
+        clock.tick(60)
+    
 
 def main(game_display,close_inventory):
     pygame.display.set_caption("Dragon's loot")

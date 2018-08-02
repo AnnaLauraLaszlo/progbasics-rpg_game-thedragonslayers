@@ -54,10 +54,10 @@ def quests_main(close_quest,user_data_dict):
                 welcome_message = font.render("It is not available yet!",True,(255, 255, 255))
                 screen.blit(welcome_message, [520,215])
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 300 and pygame.mouse.get_pos()[1] < 350 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500 :
-                welcome_message = font.render("You have to acquire the Dungeon coin",True,(255, 255, 255))
+                welcome_message = font.render("You have to acquire the Dungeon coin!",True,(255, 255, 255))
                 screen.blit(welcome_message, [520,315])
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 400 and pygame.mouse.get_pos()[1] < 450 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500 :
-                welcome_message = font.render("You have to acquire the Mountione coin",True,(255, 255, 255))
+                welcome_message = font.render("You have to acquire the Mountione coin!",True,(255, 255, 255))
                 screen.blit(welcome_message, [520,415])
 
         ui.draw_button(300,200,50,200,screen,"Forest quest",325,215,blue,red,6)
