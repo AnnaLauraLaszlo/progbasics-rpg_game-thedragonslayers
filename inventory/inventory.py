@@ -20,6 +20,21 @@ def show_loot_gold(game_display, font, loot_gold_coins):
     game_display.blit(gold, (795, 298))
 
 
+def show_message(game_display, font, attribute):
+    message = font.render("Would you like to equip this item? It will give you " + attribute, True, (0, 0, 0))
+    game_display.blit(message, (20, 450))
+
+
+def show_yes(game_display, font):
+    message = font.render("Yes", True, (255, 255, 255))
+    game_display.blit(message, (778, 450))
+
+
+def show_no(game_display, font):
+    message = font.render("No", True, (255, 255, 255))
+    game_display.blit(message, (864, 450))
+
+
 def show_sword(game_display, sword_img, x, y):
     game_display.blit(sword_img, (x, y))
 
@@ -71,10 +86,14 @@ def showing_inventory():
 
     black = (0, 0, 0,)
     white = (255, 255, 255)
-    red = (255, 0, 0)
+    red = (150, 0, 0)
+    bright_red = (220, 0, 0)
+    green = (0, 150, 0)
+    bright_green = (0, 220, 0)
     boss_killed = True
 
     loot_gold_coins = 30
+    attribute = " + 20 Health"
 
     close_inventory = False
     game_display = pygame.display.set_mode((display_width, display_height))
@@ -91,6 +110,22 @@ def showing_inventory():
             show_boss_loot(game_display, boss_loot_img, x_loot, y_loot)
             show_loot_item(game_display, loot_chest_img, x_loot_item, y_loot_item)
             show_loot_gold(game_display, font, loot_gold_coins)
+            show_message(game_display, font, attribute)
+
+            mouse = pygame.mouse.get_pos()
+            print(mouse)
+            if 770 + 60 > mouse[0] > 770 and 445 + 30 > mouse[1] > 445:
+                pygame.draw.rect(game_display, bright_green, (770, 445, 60, 30))
+            else:
+                pygame.draw.rect(game_display, green, (770, 445, 60, 30))
+
+            if 850 + 60 > mouse[0] > 850 and 445 + 30 > mouse[1] > 445:
+                pygame.draw.rect(game_display, bright_red, (850, 445, 60, 30))
+            else:
+                pygame.draw.rect(game_display, red, (850, 445, 60, 30))
+            show_yes(game_display, font)
+            show_no(game_display, font)
+
         show_health(game_display, font, 35)
         show_attack(game_display, font, 9)
         show_gold(game_display, font, 5)
