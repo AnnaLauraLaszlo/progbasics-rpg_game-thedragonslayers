@@ -32,7 +32,9 @@ def minion_fight(user_dict, enemy_dict, number_of_enemies):
                         break
                     except IndexError:
                         print('You killed them all! Good job!')
-                        return hero_health
+                        return int(hero_health)
+    return int(hero_health)
+    
                 
 
 def get_weapon(file_name):
@@ -53,8 +55,24 @@ def get_weapon(file_name):
 
 def get_costume(file_name):
     costume_loot_list = ['Ice Cloak', 'Dragon Armor']
-    hero_costume = costume_loot_list[(random.randint(0, len(weapon_loot_list)))]
-    return hero_costume
+    hero_costume = costume_loot_list[(random.randint(0, len(costume_loot_list)))]
+    hero_loot_costume = costume_loot_list[random.randint(0, (len(costume_loot_list)-1))]
+    title = "\nYou have found a %s! Would you like to change it to your default costume?" % hero_loot_costume
+    list_options = ['Yes, I want to look fashionable!', 'No thank you, I like the old one.']
+    exit_message = "Back to main menu"
+    ui.print_menu(title, list_options, exit_message)
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    if option == '1':
+        return hero_loot_costume
+    else:
+        return user_data_dict['Costume']
+
+
+def get_special_loot():
+    special_loot = 'Magic Amulet'
+    return special_loot
+
 
 
 def game_over(file_name):
@@ -65,6 +83,8 @@ def game_over(file_name):
     return empty_dictionary
     
 
+def decide_if_success(chance):
+    pass
 
 '''hero_dict = {'Health': 2, 'Damage': 20}
 enemy_dict = {'Health': 5, 'Damage': 3}
