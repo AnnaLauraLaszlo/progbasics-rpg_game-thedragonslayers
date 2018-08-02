@@ -1,9 +1,12 @@
-
 import ui
 import sys
 import pygame as pg
-import pygame
+import pygame 
 from new_game import new_game
+from quests import quests
+from resume import resume
+from character import character
+import data_manager
 
 def choose():
     
@@ -11,14 +14,16 @@ def choose():
     option = inputs[0]
     if option == "1":
         new_game.start_module('hero.csv')
+        quests.start_module('hero.csv')
     elif option == "2":
-        resume.start_module()
+        resume.start_module('hero.csv')
+        quests.start_module('hero.csv')
     elif option == "3":
         store.start_module()
     elif option == "4":
         inventory.start_module()
     elif option == "5":
-        level_up.start_module()
+        character.start_module('hero.csv')
     elif option == "6":
         options.start_module()
     elif option == "0":
@@ -45,7 +50,7 @@ def main():
     button_width = 150 
 
     gender_x_pos = 400
-    
+
     gender_result = ""
     class_result = ""
     name_result = ""
@@ -66,7 +71,6 @@ def main():
                 done = True
 
         pygame.display.flip()
-        clock.tick(60)
 
     while not name:
         pg.init()
@@ -126,9 +130,6 @@ def main():
             screen.blit(welcome_text, [300,415])
 
             pg.display.flip()
-            clock.tick(60)
-
-        
 
     while not gender:
         size = (1000, 571)
@@ -161,13 +162,11 @@ def main():
             CLASS = False
             gender_result = "other"
     
-        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 gender = True
         
         pygame.display.flip()
-        clock.tick(60)
     
     while not CLASS:
         size = (1000, 571)
@@ -192,7 +191,12 @@ def main():
                 CLASS = True
                 class_result = "mage"
         pygame.display.flip()
-        clock.tick(60)
+
+    user_data_dict = {}
+    new_game.get_user_name(name_result,user_data_dict)
+    new_game.get_user_gender(gender_result,user_data_dict)
+    new_game.get_class_stats(class_result, user_data_dict)
+    data_manager.write_user_dictionary_to_cvs("hero.csv", user_data_dict)
                   
 
 if __name__ == '__main__':
