@@ -93,8 +93,6 @@ def main(game_display,close_inventory):
 
     loot_gold_coins = 30
 
-    #close_inventory = False
-    #game_display = pygame.display.set_mode((display_width, display_height))
     while not close_inventory:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -104,7 +102,6 @@ def main(game_display,close_inventory):
 
         ui.draw_button(730,380,50,200,game_display,"BACK TO MENU",738,395,blue,red,6)
 
-        #game_display.fill(white)
         show_inventory(game_display, inventory_img, x, y)
         show_sword(game_display, sword_img, x_sword, y_sword)
         show_chest(game_display, chest_img, x_chest, y_chest)

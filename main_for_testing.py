@@ -8,29 +8,6 @@ from quests import quests
 from resume import resume
 from character import character
 import data_manager
-
-def choose():
-    
-    inputs = ui.get_inputs(["Please enter a number: "], "")
-    option = inputs[0]
-    if option == "1":
-        new_game.start_module('hero.csv')
-        quests.start_module('hero.csv')
-    elif option == "2":
-        resume.start_module('hero.csv')
-        quests.start_module('hero.csv')
-    elif option == "3":
-        store.start_module()
-    elif option == "4":
-        inventory.start_module()
-    elif option == "5":
-        character.start_module('hero.csv')
-    elif option == "6":
-        options.start_module()
-    elif option == "0":
-        sys.exit(0)
-    else:
-        raise KeyError("There is no such option.")
     
 def main():
     pygame.init()
@@ -220,7 +197,7 @@ def main():
         font = pygame.font.Font(None, 35)
         welcome_message = font.render('Welcome to the village tavern, %s! ' % user_data_dict['Name'] ,True,(255, 255, 255))
         screen.blit(welcome_message, [250,250])
-        welcome_message = font.render('Do you want a bier?',True,(255, 255, 255))
+        welcome_message = font.render('Do you want a beer?',True,(255, 255, 255))
         screen.blit(welcome_message, [350,300])
 
         ui.draw_button(40,521,50,150,screen,"QUESTS",65,536,BLUE,RED,6)
