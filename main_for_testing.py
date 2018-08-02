@@ -2,6 +2,10 @@ import ui
 import sys
 import pygame as pg
 import pygame 
+<<<<<<< HEAD
+=======
+from inventory import inventory
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
 from new_game import new_game
 from quests import quests
 from resume import resume
@@ -45,6 +49,11 @@ def main():
     CLASS = True
     name = True
     MAIN = True
+<<<<<<< HEAD
+=======
+    close_inventory = True
+    close_quest = True
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
 
     clock = pygame.time.Clock()
 
@@ -148,12 +157,21 @@ def main():
 
         if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 10 and pygame.mouse.get_pos()[1] < 60 and pygame.mouse.get_pos()[0] > 10 and pygame.mouse.get_pos()[0] < 110 :
             gender = True
+<<<<<<< HEAD
 
         if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 150 and pygame.mouse.get_pos()[1] < 200 and pygame.mouse.get_pos()[0] > 400 and pygame.mouse.get_pos()[0] < 550 :
             gender = True
             CLASS = False
             gender_result = "male"
 
+=======
+
+        if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 150 and pygame.mouse.get_pos()[1] < 200 and pygame.mouse.get_pos()[0] > 400 and pygame.mouse.get_pos()[0] < 550 :
+            gender = True
+            CLASS = False
+            gender_result = "male"
+
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
         if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 250 and pygame.mouse.get_pos()[1] < 300 and pygame.mouse.get_pos()[0] > 400 and pygame.mouse.get_pos()[0] < 550 :
             gender = True
             CLASS = False
@@ -212,17 +230,49 @@ def main():
         background_image = pygame.image.load("images/maxresdefault.jpg").convert()
         screen.blit(background_image, [0, 0])
 
+<<<<<<< HEAD
+=======
+        font = pygame.font.Font(None, 35)
+        welcome_message = font.render('Welcome to the village tavern, %s! ' % user_data_dict['Name'] ,True,(255, 255, 255))
+        screen.blit(welcome_message, [250,250])
+        welcome_message = font.render('Do you want a bier?',True,(255, 255, 255))
+        screen.blit(welcome_message, [350,300])
+
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
         ui.draw_button(40,521,50,150,screen,"QUESTS",65,536,BLUE,RED,6)
         ui.draw_button(270,521,50,150,screen,"INVENTORY",275,536,BLUE,RED,6)
         ui.draw_button(500,521,50,150,screen,"STORE",535,536,BLUE,RED,6)
         ui.draw_button(730,521,50,150,screen,"EXIT",775,536,BLUE,RED,6)
 
+<<<<<<< HEAD
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 MAIN = True
 
         pygame.display.flip()
+=======
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                MAIN = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 270 and pygame.mouse.get_pos()[0] < 420 :
+                close_inventory = False
+                inventory.main(screen ,close_inventory)
+                MAIN = False
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 40 and pygame.mouse.get_pos()[0] < 190 :
+                close_quest = False
+                quests.quests_main(close_quest,user_data_dict)
+                #MAIN = False
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 500 and pygame.mouse.get_pos()[0] < 690 :
+                MAIN = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 880 :
+                MAIN = True
+
+        pygame.display.flip()
+
+    
+
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
                   
 
 if __name__ == '__main__':

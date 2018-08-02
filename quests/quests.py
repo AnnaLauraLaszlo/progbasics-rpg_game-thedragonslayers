@@ -3,6 +3,9 @@ import common
 import data_manager
 import csv
 import os
+import sys
+import pygame as pg
+import pygame 
 from quests import forest_quest
 
 def start_module(file_name):
@@ -28,6 +31,41 @@ def choose_adventure(file_name, user_data_dict):
     else:
         raise KeyError('There is no such option!')
 
+def quests_main(close_quest,user_data_dict):
+    clock = pygame.time.Clock()
+    black = (0, 0, 0,)
+    white = (255, 255, 255)
+    red = (255, 0, 0)
+    blue = (0,0,255)
+    while not close_quest:
+        size = (1000, 571)
+        screen = pygame.display.set_mode(size)
+        background_image = pygame.image.load("images/dangerousforest.jpeg").convert()
+        screen.blit(background_image, [0, 0])
+        font = pygame.font.Font(None, 35)
+        welcome_message = font.render("Choose your adventure %s!" % user_data_dict['Name'] ,True,(255, 255, 255))
+        screen.blit(welcome_message, [100,100])
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                close_quest = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 500 and pygame.mouse.get_pos()[1] < 550 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 880 :
+                close_quest = True
+            if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pos()[1] > 200 and pygame.mouse.get_pos()[1] < 250 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500 :
+                welcome_message = font.render("It is not available yet!",True,(255, 255, 255))
+                screen.blit(welcome_message, [520,215])
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 300 and pygame.mouse.get_pos()[1] < 350 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500 :
+                welcome_message = font.render("You have to acquire the Dungeon coin",True,(255, 255, 255))
+                screen.blit(welcome_message, [520,315])
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 400 and pygame.mouse.get_pos()[1] < 450 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500 :
+                welcome_message = font.render("You have to acquire the Mountione coin",True,(255, 255, 255))
+                screen.blit(welcome_message, [520,415])
+
+        ui.draw_button(300,200,50,200,screen,"Forest quest",325,215,blue,red,6)
+        ui.draw_button(300,300,50,200,screen,"Dungeon quest",310,315,blue,red,6)
+        ui.draw_button(300,400,50,200,screen,"Mountine quest",310,415,blue,red,6)
+        ui.draw_button(730,500,50,200,screen,"BACK TO MENU",738,515,blue,red,6)
+        pygame.display.update()
+        clock.tick(60)
 
 def dungeon_quest(file_name, user_data_dict):
     if user_data_dict['Special Item'] == 'Magic Amulet':

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Name,Anna
 Level,1
 Gender,female
@@ -8,3 +9,13 @@ Gold,110
 Weapon,Magic Rod
 Costume,Star Robe
 Special Item,Magic Amulet
+=======
+Name,Sihuhu
+Level,1
+Gender,female
+Damage,5
+Health,25
+Gold,10
+Weapon,Great Axe
+Costume,Chain Armor
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
