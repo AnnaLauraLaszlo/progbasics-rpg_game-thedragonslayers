@@ -212,9 +212,10 @@ def main():
         background_image = pygame.image.load("images/maxresdefault.jpg").convert()
         screen.blit(background_image, [0, 0])
 
-        ui.draw_button(0,521,button_hight,button_width,screen,"INVENTORY",5,536,BLUE,RED,6)
-        ui.draw_button(150,521,button_hight,button_width,screen,"STORE",155,536,BLUE,RED,6)
-
+        ui.draw_button(40,521,50,150,screen,"QUESTS",65,536,BLUE,RED,6)
+        ui.draw_button(270,521,50,150,screen,"INVENTORY",275,536,BLUE,RED,6)
+        ui.draw_button(500,521,50,150,screen,"STORE",535,536,BLUE,RED,6)
+        ui.draw_button(730,521,50,150,screen,"EXIT",775,536,BLUE,RED,6)
 
 
         for event in pygame.event.get():
