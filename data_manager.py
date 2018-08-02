@@ -9,7 +9,7 @@ def get_table_from_file(file_name):
 
 
 def write_table_to_file(file_name, table):
-   
+
     with open(file_name, "w") as file:
         for record in table:
             row = ';'.join(record)
@@ -17,15 +17,20 @@ def write_table_to_file(file_name, table):
 
 
 def write_user_dictionary_to_cvs(file_name, dictionary):
-    with open(file_name,'w') as file:
+    with open(file_name, 'w') as file:
         writer = csv.writer(file)
         for key, value in dictionary.items():
             writer.writerow([key, value])
-    
+
 
 def get_user_dictionary_from_cvs(file_name):
     with open(file_name, 'r') as file:
         reader = csv.reader(file)
         user_data_dict = dict(reader)
+<<<<<<< HEAD
     return user_data_dict
 
+=======
+
+    return user_data_dict
+>>>>>>> 12f206071f67fc5e4ceb587f9bd19f55fa3ff4f0

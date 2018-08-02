@@ -34,32 +34,20 @@ def choose_new_game(file_name, user_data_dict):
             raise KeyError("There is no such option.")
 
 
-def create_hero(user_data_dict):
+"""def create_hero(user_data_dict):
         get_user_name(user_data_dict)
         get_user_gender(user_data_dict)
         get_class_stats(get_user_class(user_data_dict), user_data_dict)
         print(user_data_dict)
-
-def get_user_name(user_data_dict):
-    user_name = input('What is your name wanderer? ')
+"""
+def get_user_name(user_name,user_data_dict):
     user_data_dict['Name'] = user_name
     user_data_dict['Level'] = 1
-    
     return user_data_dict
 
 
-def get_user_gender(user_data_dict):
-    user_gender = str(input('Now choose your gender (male, female or other): '))
-    if user_gender.lower() == 'male':
-        print('Hello sir!')
-    elif user_gender.lower() == 'female':
-        print('Hello miss!')
-    elif user_gender.lower() == 'other':
-        print('Hello you!')
-    else:
-        raise KeyError('There is no such option. Yet.')
+def get_user_gender(user_gender,user_data_dict):
     user_data_dict['Gender'] = user_gender
-
     return user_data_dict
 
 def get_user_class(user_data_dict):
@@ -103,3 +91,4 @@ def choose_preset_hero():
 
 def random_hero():
     pass
+
