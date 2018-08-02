@@ -67,13 +67,18 @@ def quests_main(close_quest,user_data_dict):
         pygame.display.update()
         clock.tick(60)
 
-'''def forest_quest(file_name, user_data_dict):
-    
-
-
-def dungeon_quest(file_name, user_level):
-    pass
+def dungeon_quest(file_name, user_data_dict):
+    if user_data_dict['Special Item'] == 'Magic Amulet':
+        print('You may enter the Dungeon!')
+    else:
+        print('You need the Magic Amulet to enter the dungeon!')
 
 
 def mountain_quest(file_name, user_level):
-    pass'''
+    password = 'It\'s the age of the dragons.'
+    user_input = input('Enter the password. ')
+    if user_input == password:
+        print('Climb the mountain!')
+        pass
+    else:
+        print('Sorry, you are wrong.')

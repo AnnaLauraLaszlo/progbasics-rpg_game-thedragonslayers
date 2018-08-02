@@ -65,11 +65,19 @@ def main(game_display,close_inventory):
     pygame.display.set_caption("Dragon's loot")
     clock = pygame.time.Clock()
 
+<<<<<<< HEAD
+    inventory_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/inventory.png")
+    sword_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_blade.png")
+    chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_chest.png")
+    boss_loot_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/boss_loot.png")
+    loot_chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/2nd_chest.png")
+=======
     inventory_img = pygame.image.load("images/inventory.png")
     sword_img = pygame.image.load("images/1st_blade.png")
     chest_img = pygame.image.load("images/1st_chest.png")
     boss_loot_img = pygame.image.load("images/boss_loot.png")
     loot_chest_img = pygame.image.load("images/2nd_chest.png")
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
 
     font = pygame.font.Font("freesansbold.ttf", 24)
     x = 0
@@ -93,8 +101,13 @@ def main(game_display,close_inventory):
 
     loot_gold_coins = 30
 
+<<<<<<< HEAD
+    close_inventory = False
+    game_display = pygame.display.set_mode((display_width, display_height))
+=======
     #close_inventory = False
     #game_display = pygame.display.set_mode((display_width, display_height))
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
     while not close_inventory:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -116,3 +129,13 @@ def main(game_display,close_inventory):
         show_gold(game_display, font, 5)
         pygame.display.update()
         clock.tick(60)
+<<<<<<< HEAD
+
+    pygame.quit()
+    quit()
+
+
+if __name__ == '__main__':
+    main()
+=======
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc

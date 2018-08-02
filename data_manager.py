@@ -9,7 +9,10 @@ def get_table_from_file(file_name):
 
 
 def write_table_to_file(file_name, table):
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6abc266badc2f594bd5254fb5b65ea871bb0a9dc
     with open(file_name, "w") as file:
         for record in table:
             row = ';'.join(record)
@@ -29,3 +32,8 @@ def get_user_dictionary_from_cvs(file_name):
         user_data_dict = dict(reader)
     return user_data_dict
 
+
+def write_event_text_to_csv(file_name, text):
+    with open(file_name,'a') as file:
+        for line in text:
+            file.write(line)
