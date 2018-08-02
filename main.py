@@ -38,11 +38,13 @@ def main():
     WHITE = (255, 255, 255)
     GREEN = (0, 255, 0)
     RED = (255, 0, 0)
+    BLUE = (0,0,255)
     
     done = False
     gender = True
     CLASS = True
     name = True
+    MAIN = True
 
     clock = pygame.time.Clock()
 
@@ -58,10 +60,10 @@ def main():
     while not done:
         size = (700, 431)
         screen = pygame.display.set_mode(size)
-        background_image = pygame.image.load("dragon.jpeg").convert()
+        background_image = pygame.image.load("images/dragon.jpeg").convert()
         screen.blit(background_image, [0, 0])
-        ui.draw_button(250,150,50,200,screen,"START GAME",270,165,WHITE,RED)
-        ui.draw_button(250,250,50,200,screen,"EXIT",320,265,WHITE,RED)
+        ui.draw_button(250,150,50,200,screen,"START GAME",270,165,WHITE,RED,3)
+        ui.draw_button(250,250,50,200,screen,"EXIT",320,265,WHITE,RED,3)
         for event in pygame.event.get():
             if event.type == pygame.QUIT or event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 250 and pygame.mouse.get_pos()[1] < 300 and pygame.mouse.get_pos()[0] > 250 and pygame.mouse.get_pos()[0] < 450:
                 done = True
@@ -134,15 +136,15 @@ def main():
     while not gender:
         size = (1000, 571)
         screen = pygame.display.set_mode(size)
-        background_image = pygame.image.load("forest.jpg").convert()
+        background_image = pygame.image.load("images/forest.jpg").convert()
         screen.blit(background_image, [0, 0])
         font = pygame.font.Font(None, 55)
         start_game = font.render("GENDER:",True,WHITE)
         screen.blit(start_game, [100,250])
-        ui.draw_button(gender_x_pos,150,button_hight,button_width,screen,"MALE",435,165,WHITE,RED)
-        ui.draw_button(gender_x_pos,250,button_hight,button_width,screen,"FEMALE",430,265,WHITE,RED)
-        ui.draw_button(gender_x_pos,350,button_hight,button_width,screen,"OTHER",430,365,WHITE,RED)
-        ui.draw_button(10,10,50,100,screen,"EXIT",25,25,WHITE,RED)
+        ui.draw_button(gender_x_pos,150,button_hight,button_width,screen,"MALE",435,165,WHITE,RED,3)
+        ui.draw_button(gender_x_pos,250,button_hight,button_width,screen,"FEMALE",430,265,WHITE,RED,3)
+        ui.draw_button(gender_x_pos,350,button_hight,button_width,screen,"OTHER",430,365,WHITE,RED,3)
+        ui.draw_button(10,10,50,100,screen,"EXIT",25,25,WHITE,RED,3)
 
         if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 10 and pygame.mouse.get_pos()[1] < 60 and pygame.mouse.get_pos()[0] > 10 and pygame.mouse.get_pos()[0] < 110 :
             gender = True
@@ -171,25 +173,31 @@ def main():
     while not CLASS:
         size = (1000, 571)
         screen = pygame.display.set_mode(size)
-        background_image = pygame.image.load("forest.jpg").convert()
+        background_image = pygame.image.load("images/forest.jpg").convert()
         screen.blit(background_image, [0, 0])
         font = pygame.font.Font(None, 55)
         start_game = font.render("CLASS:",True,WHITE)
         screen.blit(start_game, [100,250])
-        ui.draw_button(gender_x_pos,200,button_hight,button_width,screen,"WARRIOR",415,215,WHITE,RED)
-        ui.draw_button(gender_x_pos,300,button_hight,button_width,screen,"MAGE",440,315,WHITE,RED)
-        ui.draw_button(10,10,50,100,screen,"EXIT",25,25,WHITE,RED)
+        ui.draw_button(gender_x_pos,200,button_hight,button_width,screen,"WARRIOR",415,215,WHITE,RED,3)
+        ui.draw_button(gender_x_pos,300,button_hight,button_width,screen,"MAGE",440,315,WHITE,RED,3)
+        ui.draw_button(10,10,50,100,screen,"EXIT",25,25,WHITE,RED,3)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game = True
+
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 10 and pygame.mouse.get_pos()[1] < 60 and pygame.mouse.get_pos()[0] > 10 and pygame.mouse.get_pos()[0] < 110 :
                 CLASS = True
+
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 200 and pygame.mouse.get_pos()[1] < 250 and pygame.mouse.get_pos()[0] > 400 and pygame.mouse.get_pos()[0] < 550 :
                 CLASS = True
+                MAIN = False
                 class_result = "warrior"
+
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 300 and pygame.mouse.get_pos()[1] < 350 and pygame.mouse.get_pos()[0] > 400 and pygame.mouse.get_pos()[0] < 550 :
                 CLASS = True
+                MAIN = False
                 class_result = "mage"
+
         pygame.display.flip()
 
     user_data_dict = {}
@@ -197,6 +205,23 @@ def main():
     new_game.get_user_gender(gender_result,user_data_dict)
     new_game.get_class_stats(class_result, user_data_dict)
     data_manager.write_user_dictionary_to_cvs("hero.csv", user_data_dict)
+
+    while not MAIN: 
+        size = (1000, 571)
+        screen = pygame.display.set_mode(size)
+        background_image = pygame.image.load("images/maxresdefault.jpg").convert()
+        screen.blit(background_image, [0, 0])
+
+        ui.draw_button(0,521,button_hight,button_width,screen,"INVENTORY",5,536,BLUE,RED,6)
+        ui.draw_button(150,521,button_hight,button_width,screen,"STORE",155,536,BLUE,RED,6)
+
+
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                MAIN = True
+
+        pygame.display.flip()
                   
 
 if __name__ == '__main__':
