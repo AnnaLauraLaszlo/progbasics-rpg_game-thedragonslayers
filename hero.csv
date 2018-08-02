@@ -1,8 +1,12 @@
-Name,asdasd
+Name,dsave
 Level,1
 Gender,female
-Damage,5
-Health,25
+Damage,10
+Health,20
 Gold,10
-Weapon,Great Axe
-Costume,Chain Armor
+Weapon,Basic Rod
+Costume,Basic Robe
+Weapon image,images/1st_wand.png
+Weapon damage,5
+Costume image,images/1st_robe.png
+Costume health,10

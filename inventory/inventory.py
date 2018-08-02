@@ -1,5 +1,7 @@
 import pygame
 import ui
+from new_game import new_game
+import data_manager
 
 pygame.init()
 
@@ -22,7 +24,7 @@ def show_loot_gold(game_display, font, loot_gold_coins):
 
 
 def show_message(game_display, font, attribute):
-    message = font.render("Would you like to equip this item? It will give you " + attribute, True, (0, 0, 0))
+    message = font.render("Would you like to equip this item? It will give you " + attribute, True, (255, 255, 255))
     game_display.blit(message, (20, 450))
 
 
@@ -36,21 +38,23 @@ def show_no(game_display, font):
     game_display.blit(message, (864, 450))
 
 
-def show_sword(game_display, sword_img, x, y):
-    game_display.blit(sword_img, (x, y))
+def show_sword(game_display, weapon_img, x, y):
+    game_display.blit(weapon_img, (x, y))
 
 
-def show_chest(game_display, chest_img, x, y):
-    game_display.blit(chest_img, (x, y))
+def show_chest(game_display, costume_img, x, y):
+    game_display.blit(costume_img, (x, y))
 
 
-def show_health(game_display, font, health_points):
-    health = font.render("Health: " + str(health_points), True, (255, 0, 0))
+def show_health(game_display, font, health_points, item_health):
+    health_sum = int(health_points) + int(item_health)
+    health = font.render("Health: " + str(health_sum), True, (255, 0, 0))
     game_display.blit(health, (35, 30))
 
 
-def show_attack(game_display, font, attack_points):
-    attack = font.render("Attack: " + str(attack_points), True, (0, 255, 0))
+def show_attack(game_display, font, attack_points, item_attack):
+    attack_sum = int(attack_points) + int(item_attack)
+    attack = font.render("Attack: " + str(attack_sum), True, (0, 255, 0))
     game_display.blit(attack, (35, 65))
 
 
@@ -59,25 +63,35 @@ def show_gold(game_display, font, gold_coins):
     game_display.blit(gold, (500, 30))
 
 
-def showing_inventory():
+def show_shop(close_shop, game_display):
+    clock = pygame.time.Clock()
+    red = (255, 0, 0)
+    blue = (0, 0, 255)
+    boss_loot_img = pygame.image.load("images/boss_loot.png")
+    while not close_shop:
+        show_boss_loot(game_display, boss_loot_img, 300, 50)
+        ui.draw_button(730, 380, 50, 200, game_display, "BACK TO MENU", 738, 395, blue, red, 6)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                close_shop = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 380 and pygame.mouse.get_pos()[1] < 430 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 930:
+                close_shop = True
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+def main(game_display, close_inventory):
     pygame.display.set_caption("Dragon's loot")
     clock = pygame.time.Clock()
+    user_data_dict = data_manager.get_user_dictionary_from_cvs("./hero.csv")
 
-    inventory_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/inventory.png")
-    sword_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_blade.png")
-    chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_chest.png")
-    boss_loot_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/boss_loot.png")
-    loot_chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/2nd_chest.png")
-    loot_sword_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/2nd_sword.png")
-def main(game_display,close_inventory):
-    pygame.display.set_caption("Dragon's loot")
-    clock = pygame.time.Clock()
-
-    inventory_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/inventory.png")
-    sword_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_blade.png")
-    chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_chest.png")
-    boss_loot_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/boss_loot.png")
-    loot_chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/2nd_chest.png")
+    inventory_img = pygame.image.load("images/inventory.png")
+    weapon_img = pygame.image.load(user_data_dict['Weapon image'])
+    costume_img = pygame.image.load(user_data_dict['Costume image'])
+    boss_loot_img = pygame.image.load("images/boss_loot.png")
+    loot_chest_img = pygame.image.load("images/2nd_chest.png")
+    loot_sword_img = pygame.image.load("images/2nd_sword.png")
 
     font = pygame.font.Font("freesansbold.ttf", 24)
     x = 0
@@ -100,26 +114,23 @@ def main(game_display,close_inventory):
     bright_red = (220, 0, 0)
     green = (0, 150, 0)
     bright_green = (0, 220, 0)
-    boss_killed = True
 
+    boss_killed = False
     loot_gold_coins = 30
     attribute = " + 20 Health"
 
-    #close_inventory = False
-    #game_display = pygame.display.set_mode((display_width, display_height))
     while not close_inventory:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 close_inventory = True
-            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 380 and pygame.mouse.get_pos()[1] < 430 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 930 :
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 380 and pygame.mouse.get_pos()[1] < 430 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 930:
                 close_inventory = True
 
-        ui.draw_button(730,380,50,200,game_display,"BACK TO MENU",738,395,blue,red,6)
+        ui.draw_button(730, 380, 50, 200, game_display, "BACK TO MENU", 738, 395, blue, red, 6)
 
-        #game_display.fill(white)
         show_inventory(game_display, inventory_img, x, y)
-        show_sword(game_display, sword_img, x_sword, y_sword)
-        show_chest(game_display, chest_img, x_chest, y_chest)
+        show_sword(game_display, weapon_img, x_sword, y_sword)
+        show_chest(game_display, costume_img, x_chest, y_chest)
         if boss_killed:
             show_boss_loot(game_display, boss_loot_img, x_loot, y_loot)
             show_loot_item(game_display, loot_chest_img, x_loot_item, y_loot_item)
@@ -127,7 +138,6 @@ def main(game_display,close_inventory):
             show_message(game_display, font, attribute)
 
             mouse = pygame.mouse.get_pos()
-            print(mouse)
             if 770 + 60 > mouse[0] > 770 and 445 + 30 > mouse[1] > 445:
                 pygame.draw.rect(game_display, bright_green, (770, 445, 60, 30))
             else:
@@ -140,8 +150,8 @@ def main(game_display,close_inventory):
             show_yes(game_display, font)
             show_no(game_display, font)
 
-        show_health(game_display, font, 35)
-        show_attack(game_display, font, 9)
-        show_gold(game_display, font, 5)
+        show_health(game_display, font, user_data_dict['Health'], user_data_dict['Costume health'])
+        show_attack(game_display, font, user_data_dict['Damage'], user_data_dict['Weapon damage'])
+        show_gold(game_display, font, user_data_dict['Gold'])
         pygame.display.update()
         clock.tick(60)
