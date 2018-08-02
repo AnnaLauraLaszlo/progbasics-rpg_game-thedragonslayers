@@ -34,12 +34,12 @@ def choose_new_game(file_name, user_data_dict):
             raise KeyError("There is no such option.")
 
 
-"""def create_hero(user_data_dict):
+def create_hero(user_data_dict):
         get_user_name(user_data_dict)
         get_user_gender(user_data_dict)
         get_class_stats(get_user_class(user_data_dict), user_data_dict)
         print(user_data_dict)
-"""
+
 def get_user_name(user_name,user_data_dict):
     user_data_dict['Name'] = user_name
     user_data_dict['Level'] = 1

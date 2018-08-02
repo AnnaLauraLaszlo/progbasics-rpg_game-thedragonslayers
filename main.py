@@ -2,6 +2,7 @@ import ui
 import sys
 import pygame as pg
 import pygame 
+from inventory import inventory
 from new_game import new_game
 from quests import quests
 from resume import resume
@@ -45,6 +46,7 @@ def main():
     CLASS = True
     name = True
     MAIN = True
+    close_inventory = True
 
     clock = pygame.time.Clock()
 
@@ -217,12 +219,24 @@ def main():
         ui.draw_button(500,521,50,150,screen,"STORE",535,536,BLUE,RED,6)
         ui.draw_button(730,521,50,150,screen,"EXIT",775,536,BLUE,RED,6)
 
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 MAIN = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 270 and pygame.mouse.get_pos()[0] < 420 :
+                close_inventory = False
+                inventory.main(screen ,close_inventory)
+                MAIN = False
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 40 and pygame.mouse.get_pos()[0] < 190 :
+                MAIN = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 500 and pygame.mouse.get_pos()[0] < 690 :
+                MAIN = True
+            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 880 :
+                MAIN = True
 
         pygame.display.flip()
+
+    
+
                   
 
 if __name__ == '__main__':
