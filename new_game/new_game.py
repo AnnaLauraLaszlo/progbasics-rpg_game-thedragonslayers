@@ -40,26 +40,14 @@ def create_hero(user_data_dict):
         get_class_stats(get_user_class(user_data_dict), user_data_dict)
         print(user_data_dict)
 
-def get_user_name(user_data_dict):
-    user_name = input('What is your name wanderer? ')
+def get_user_name(user_name,user_data_dict):
     user_data_dict['Name'] = user_name
     user_data_dict['Level'] = 1
-    
     return user_data_dict
 
 
-def get_user_gender(user_data_dict):
-    user_gender = str(input('Now choose your gender (male, female or other): '))
-    if user_gender.lower() == 'male':
-        print('Hello sir!')
-    elif user_gender.lower() == 'female':
-        print('Hello miss!')
-    elif user_gender.lower() == 'other':
-        print('Hello you!')
-    else:
-        raise KeyError('There is no such option. Yet.')
+def get_user_gender(user_gender,user_data_dict):
     user_data_dict['Gender'] = user_gender
-
     return user_data_dict
 
 def get_user_class(user_data_dict):
@@ -72,19 +60,25 @@ def get_user_class(user_data_dict):
 def get_class_stats(user_class, user_data_dict):
     hero_health = 0
     hero_damage = 0
-    weapon_list = ['magic rod', 'great axe']
+    hero_gold = 10
+    weapon_list = ['Magic Rod', 'Great Axe']
+    costume_list = ['Star Robe', 'Chain Armor']
     if user_class.lower() == 'mage':
         hero_weapon = weapon_list[0]
+        hero_costume = costume_list[0]
         hero_health = 20
-        hero_damage = 7
+        hero_damage = 10
     if user_class.lower() == 'warrior':
         hero_weapon = weapon_list[1]
+        hero_costume = costume_list[1]
         hero_health = 25
         hero_damage = 5
     
     user_data_dict['Damage'] = hero_damage
     user_data_dict['Health'] = hero_health
+    user_data_dict['Gold'] = hero_gold
     user_data_dict['Weapon'] = hero_weapon
+    user_data_dict['Costume'] = hero_costume
 
     return user_data_dict
 
@@ -97,3 +91,4 @@ def choose_preset_hero():
 
 def random_hero():
     pass
+
