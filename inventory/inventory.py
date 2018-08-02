@@ -11,8 +11,8 @@ def show_boss_loot(game_display, boss_loot_img, x, y):
     game_display.blit(boss_loot_img, (x, y))
 
 
-def show_loot_chest(game_display, loot_chest_img, x, y):
-    game_display.blit(loot_chest_img, (x, y))
+def show_loot_item(game_display, loot_item_img, x, y):
+    game_display.blit(loot_item_img, (x, y))
 
 
 def show_loot_gold(game_display, font, loot_gold_coins):
@@ -43,7 +43,7 @@ def show_gold(game_display, font, gold_coins):
     game_display.blit(gold, (500, 30))
 
 
-def main():
+def showing_inventory():
     pygame.display.set_caption("Dragon's loot")
     clock = pygame.time.Clock()
 
@@ -52,6 +52,7 @@ def main():
     chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/1st_chest.png")
     boss_loot_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/boss_loot.png")
     loot_chest_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/2nd_chest.png")
+    loot_sword_img = pygame.image.load("progbasics-rpg_game-thedragonslayers/images/2nd_sword.png")
 
     font = pygame.font.Font("freesansbold.ttf", 24)
     x = 0
@@ -62,8 +63,8 @@ def main():
     y_chest = 160
     x_loot = 640
     y_loot = 0
-    x_loot_chest = 625
-    y_loot_chest = 10
+    x_loot_item = 625
+    y_loot_item = 10
 
     display_width = 1000
     display_height = 571
@@ -71,6 +72,7 @@ def main():
     black = (0, 0, 0,)
     white = (255, 255, 255)
     red = (255, 0, 0)
+    boss_killed = True
 
     loot_gold_coins = 30
 
@@ -85,9 +87,10 @@ def main():
         show_inventory(game_display, inventory_img, x, y)
         show_sword(game_display, sword_img, x_sword, y_sword)
         show_chest(game_display, chest_img, x_chest, y_chest)
-        show_boss_loot(game_display, boss_loot_img, x_loot, y_loot)
-        show_loot_chest(game_display, loot_chest_img, x_loot_chest, y_loot_chest)
-        show_loot_gold(game_display, font, loot_gold_coins)
+        if boss_killed:
+            show_boss_loot(game_display, boss_loot_img, x_loot, y_loot)
+            show_loot_item(game_display, loot_chest_img, x_loot_item, y_loot_item)
+            show_loot_gold(game_display, font, loot_gold_coins)
         show_health(game_display, font, 35)
         show_attack(game_display, font, 9)
         show_gold(game_display, font, 5)
@@ -99,4 +102,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    showing_inventory()
