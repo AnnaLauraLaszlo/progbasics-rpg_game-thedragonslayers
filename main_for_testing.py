@@ -215,6 +215,12 @@ def main():
         background_image = pygame.image.load("images/maxresdefault.jpg").convert()
         screen.blit(background_image, [0, 0])
 
+        font = pygame.font.Font(None, 35)
+        welcome_message = font.render('Welcome to the village tavern, %s! ' % user_data_dict['Name'] ,True,(255, 255, 255))
+        screen.blit(welcome_message, [250,250])
+        welcome_message = font.render('Do you want a bier?',True,(255, 255, 255))
+        screen.blit(welcome_message, [350,300])
+
         ui.draw_button(40,521,50,150,screen,"QUESTS",65,536,BLUE,RED,6)
         ui.draw_button(270,521,50,150,screen,"INVENTORY",275,536,BLUE,RED,6)
         ui.draw_button(500,521,50,150,screen,"STORE",535,536,BLUE,RED,6)
@@ -222,15 +228,15 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                MAIN = False
+                MAIN = True
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 270 and pygame.mouse.get_pos()[0] < 420 :
                 close_inventory = False
                 inventory.main(screen ,close_inventory)
                 MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 40 and pygame.mouse.get_pos()[0] < 190 :
                 close_quest = False
-                quests.quests(close_quest)
-                MAIN = False
+                quests.quests_main(close_quest,user_data_dict)
+                #MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 500 and pygame.mouse.get_pos()[0] < 690 :
                 MAIN = True
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 880 :
