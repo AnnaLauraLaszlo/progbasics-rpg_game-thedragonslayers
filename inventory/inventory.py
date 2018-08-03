@@ -82,7 +82,7 @@ def show_shop(close_shop, game_display):
         clock.tick(60)
 
 
-def main(game_display, close_inventory):
+def main(game_display, close_inventory, boss_killed):
     pygame.display.set_caption("Dragon's loot")
     clock = pygame.time.Clock()
 
@@ -117,7 +117,6 @@ def main(game_display, close_inventory):
     green = (0, 150, 0)
     bright_green = (0, 220, 0)
 
-    boss_killed = True
     loot_gold_coins = random.randint(8, 24)
     attribute = " + 15 Health"
 

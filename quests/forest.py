@@ -24,10 +24,19 @@ def forest_main(game_display, close_forest_quest, user_data_dict):
         background_image = pygame.image.load("images/forest_quest.jpg").convert()
         game_display.blit(background_image, (0, 0))
         font = pygame.font.Font(None, 35)
-        message = font.render("You arrived to the forest...", True, (255, 255, 255))
-        game_display.blit(message, (350, 450))
-        game_display.blit(show_hero, (400, 40))
-        game_display.blit(show_enemy, (270, 200))
+        boss_killed = False
+        if not boss_killed:
+            message = font.render("You arrived to the forest...", True, (255, 255, 255))
+            game_display.blit(message, (350, 450))
+            message = font.render("Oh No! You are surrounded by a pack of wolfes!", True, (255, 255, 255))
+            game_display.blit(message, (290, 490))
+            game_display.blit(show_hero, (400, 40))
+            game_display.blit(show_enemy, (270, 200))
+            pygame.time.wait(600)
+        # boss_killed = True
+        if boss_killed:
+            close_inventory = False
+            inventory.main(game_display, close_inventory, boss_killed)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

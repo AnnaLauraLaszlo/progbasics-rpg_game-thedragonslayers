@@ -3,10 +3,10 @@ Level,1
 Gender,male
 Damage,6
 Health,30
-Gold,10
+Gold,18
 Weapon,Basic Sword
 Costume,Basic Armor
 Weapon image,images/1st_blade.png
 Weapon damage,4
-Costume image,images/1st_chest.png
-Costume health,20
+Costume image,images/2nd_chest.png
+Costume health,35

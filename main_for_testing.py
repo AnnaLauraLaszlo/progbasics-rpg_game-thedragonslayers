@@ -30,6 +30,7 @@ def main():
     close_inventory = True
     close_quest = True
     close_shop = True
+    boss_killed = False
 
     clock = pygame.time.Clock()
 
@@ -213,7 +214,7 @@ def main():
                 MAIN = True
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 270 and pygame.mouse.get_pos()[0] < 420:
                 close_inventory = False
-                inventory.main(screen, close_inventory)
+                inventory.main(screen, close_inventory, boss_killed)
                 MAIN = False
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 521 and pygame.mouse.get_pos()[1] < 570 and pygame.mouse.get_pos()[0] > 40 and pygame.mouse.get_pos()[0] < 190:
                 close_quest = False
