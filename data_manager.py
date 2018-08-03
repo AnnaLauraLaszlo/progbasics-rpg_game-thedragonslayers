@@ -30,6 +30,6 @@ def get_user_dictionary_from_cvs(file_name):
 
 
 def write_event_text_to_csv(file_name, text):
-    with open(file_name,'a') as file:
+    with open(file_name, 'a') as file:
         for line in text:
             file.write(line)

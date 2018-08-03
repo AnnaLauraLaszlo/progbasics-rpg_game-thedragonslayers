@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Name,Sihuhu
 Level,1
 Gender,female
@@ -6,3 +7,17 @@ Health,25
 Gold,10
 Weapon,Great Axe
 Costume,Chain Armor
+=======
+Name,asd
+Level,1
+Gender,male
+Damage,6
+Health,30
+Gold,18
+Weapon,Basic Sword
+Costume,Basic Armor
+Weapon image,images/1st_blade.png
+Weapon damage,4
+Costume image,images/2nd_chest.png
+Costume health,35
+>>>>>>> 6d1937ff8c561b68097a1360692dd0b661476af0

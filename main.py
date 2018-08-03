@@ -32,14 +32,14 @@ def choose():
 
 
 def handle_menu():
-    options = ["\033[1;32;48mNew Game",
+    options = ["New Game",
                "Resume",
                "Store",
                "Inventory",
                "Your Character",
                "Options"]
 
-    ui.print_menu("Main Menu", options, "Exit Game")
+    ui.print_menu("\033[1;32;48mMain Menu", options, "Exit Game")
 
 
 def main():
