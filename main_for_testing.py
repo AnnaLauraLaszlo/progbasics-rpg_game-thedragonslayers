@@ -8,11 +8,14 @@ from quests import quests
 from resume import resume
 from character import character
 import data_manager
+from quests import forest
 
 
 def main():
     pygame.init()
     pygame.display.set_caption("Dragon's loot")
+    # pygame.mixer.music.load('images/opening_music.mp3')
+    # pygame.mixer.music.play(0)
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     GREEN = (0, 255, 0)

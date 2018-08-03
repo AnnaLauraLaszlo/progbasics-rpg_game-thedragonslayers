@@ -87,7 +87,6 @@ def main(game_display, close_inventory):
     clock = pygame.time.Clock()
 
     user_data_dict = data_manager.get_user_dictionary_from_cvs("./hero.csv")
-    # update_data_dict = data_manager.write_user_dictionary_to_cvs("./hero.csv", user_data_dict)
 
     inventory_img = pygame.image.load("images/inventory.png")
     weapon_img = pygame.image.load(user_data_dict['Weapon image'])
@@ -145,7 +144,7 @@ def main(game_display, close_inventory):
                 if event.type == pygame.MOUSEBUTTONUP and 770 + 60 > mouse[0] > 770 and 445 + 30 > mouse[1] > 445:
                     pygame.draw.rect(game_display, bright_green, (770, 445, 60, 30))
                     user_data_dict['Costume health'] = 35
-                    user_data_dict['Costume image'] = loot_chest_img
+                    user_data_dict['Costume image'] = "images/2nd_chest.png"
                     user_data_dict['Gold'] = int(user_data_dict['Gold']) + loot_gold_coins
                     data_manager.write_user_dictionary_to_cvs("./hero.csv", user_data_dict)
                     boss_killed = False

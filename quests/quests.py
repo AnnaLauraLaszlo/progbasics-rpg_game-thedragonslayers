@@ -1,6 +1,7 @@
 import ui
 import common
 import data_manager
+from quests import forest
 import csv
 import os
 import sys
@@ -52,7 +53,9 @@ def quests_main(close_quest, user_data_dict):
                 close_quest = True
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 20 and pygame.mouse.get_pos()[1] < 70 and pygame.mouse.get_pos()[0] > 20 and pygame.mouse.get_pos()[0] < 220:
                 close_quest = True
-            if 250 > pygame.mouse.get_pos()[1] > 200 and 500 > pygame.mouse.get_pos()[0] > 300:
+            if event.type == pygame.MOUSEBUTTONUP and 250 > pygame.mouse.get_pos()[1] > 200 and 500 > pygame.mouse.get_pos()[0] > 300:
+                close_forest_quest = False
+                forest.forest_main(screen, close_forest_quest, user_data_dict)
                 welcome_message = font.render("It is not available yet!", True, (255, 255, 255))
                 screen.blit(welcome_message, [520, 215])
             if 350 > pygame.mouse.get_pos()[1] > 300 and 500 > pygame.mouse.get_pos()[0] > 300:
