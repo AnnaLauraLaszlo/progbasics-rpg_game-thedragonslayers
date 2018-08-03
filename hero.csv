@@ -1,12 +1,12 @@
-Name,dsave
+Name,asd
 Level,1
-Gender,female
-Damage,10
-Health,20
-Gold,10
-Weapon,Basic Rod
-Costume,Basic Robe
-Weapon image,images/1st_wand.png
-Weapon damage,5
-Costume image,images/1st_robe.png
-Costume health,10
+Gender,male
+Damage,6
+Health,30
+Gold,21
+Weapon,Basic Sword
+Costume,Basic Armor
+Weapon image,images/1st_blade.png
+Weapon damage,4
+Costume image,<Surface(150x150x32 SW)>
+Costume health,35

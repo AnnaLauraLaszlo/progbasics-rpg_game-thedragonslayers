@@ -1,4 +1,5 @@
 import pygame
+import random
 import ui
 from new_game import new_game
 import data_manager
@@ -84,7 +85,9 @@ def show_shop(close_shop, game_display):
 def main(game_display, close_inventory):
     pygame.display.set_caption("Dragon's loot")
     clock = pygame.time.Clock()
+
     user_data_dict = data_manager.get_user_dictionary_from_cvs("./hero.csv")
+    # update_data_dict = data_manager.write_user_dictionary_to_cvs("./hero.csv", user_data_dict)
 
     inventory_img = pygame.image.load("images/inventory.png")
     weapon_img = pygame.image.load(user_data_dict['Weapon image'])
@@ -115,15 +118,15 @@ def main(game_display, close_inventory):
     green = (0, 150, 0)
     bright_green = (0, 220, 0)
 
-    boss_killed = False
-    loot_gold_coins = 30
-    attribute = " + 20 Health"
+    boss_killed = True
+    loot_gold_coins = random.randint(8, 24)
+    attribute = " + 15 Health"
 
     while not close_inventory:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 close_inventory = True
-            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 380 and pygame.mouse.get_pos()[1] < 430 and pygame.mouse.get_pos()[0] > 730 and pygame.mouse.get_pos()[0] < 930:
+            if event.type == pygame.MOUSEBUTTONUP and 430 > pygame.mouse.get_pos()[1] > 380 and 930 > pygame.mouse.get_pos()[0] > 730:
                 close_inventory = True
 
         ui.draw_button(730, 380, 50, 200, game_display, "BACK TO MENU", 738, 395, blue, red, 6)
@@ -138,15 +141,23 @@ def main(game_display, close_inventory):
             show_message(game_display, font, attribute)
 
             mouse = pygame.mouse.get_pos()
-            if 770 + 60 > mouse[0] > 770 and 445 + 30 > mouse[1] > 445:
-                pygame.draw.rect(game_display, bright_green, (770, 445, 60, 30))
-            else:
-                pygame.draw.rect(game_display, green, (770, 445, 60, 30))
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONUP and 770 + 60 > mouse[0] > 770 and 445 + 30 > mouse[1] > 445:
+                    pygame.draw.rect(game_display, bright_green, (770, 445, 60, 30))
+                    user_data_dict['Costume health'] = 35
+                    user_data_dict['Costume image'] = loot_chest_img
+                    user_data_dict['Gold'] = int(user_data_dict['Gold']) + loot_gold_coins
+                    data_manager.write_user_dictionary_to_cvs("./hero.csv", user_data_dict)
+                    boss_killed = False
+                    close_inventory = True
+                else:
+                    pygame.draw.rect(game_display, green, (770, 445, 60, 30))
 
-            if 850 + 60 > mouse[0] > 850 and 445 + 30 > mouse[1] > 445:
-                pygame.draw.rect(game_display, bright_red, (850, 445, 60, 30))
-            else:
-                pygame.draw.rect(game_display, red, (850, 445, 60, 30))
+                if event.type == pygame.MOUSEBUTTONUP and 850 + 60 > mouse[0] > 850 and 445 + 30 > mouse[1] > 445:
+                    pygame.draw.rect(game_display, bright_red, (850, 445, 60, 30))
+                    close_inventory = True
+                else:
+                    pygame.draw.rect(game_display, red, (850, 445, 60, 30))
             show_yes(game_display, font)
             show_no(game_display, font)
 

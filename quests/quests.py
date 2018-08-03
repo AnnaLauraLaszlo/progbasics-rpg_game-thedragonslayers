@@ -52,14 +52,14 @@ def quests_main(close_quest, user_data_dict):
                 close_quest = True
             if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 20 and pygame.mouse.get_pos()[1] < 70 and pygame.mouse.get_pos()[0] > 20 and pygame.mouse.get_pos()[0] < 220:
                 close_quest = True
-            if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pos()[1] > 200 and pygame.mouse.get_pos()[1] < 250 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500:
+            if 250 > pygame.mouse.get_pos()[1] > 200 and 500 > pygame.mouse.get_pos()[0] > 300:
                 welcome_message = font.render("It is not available yet!", True, (255, 255, 255))
                 screen.blit(welcome_message, [520, 215])
-            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 300 and pygame.mouse.get_pos()[1] < 350 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500:
+            if 350 > pygame.mouse.get_pos()[1] > 300 and 500 > pygame.mouse.get_pos()[0] > 300:
                 welcome_message = font.render("You have to acquire the Dungeon coin!", True, (255, 255, 255))
                 screen.blit(welcome_message, [520, 315])
-            if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pos()[1] > 400 and pygame.mouse.get_pos()[1] < 450 and pygame.mouse.get_pos()[0] > 300 and pygame.mouse.get_pos()[0] < 500:
-                welcome_message = font.render("You have to acquire the Mountine coin!", True, (255, 255, 255))
+            if 450 > pygame.mouse.get_pos()[1] > 400 and 500 > pygame.mouse.get_pos()[0] > 300:
+                welcome_message = font.render("You have to acquire the Mountain coin!", True, (255, 255, 255))
                 screen.blit(welcome_message, [520, 415])
 
         ui.draw_button(300, 200, 50, 200, screen, "Forest quest", 325, 215, blue, red, 6)
